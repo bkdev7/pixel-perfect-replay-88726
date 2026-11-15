@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import {
 import { founders, messages, type Founder } from "@/data";
 import { whatsappLink } from "@/lib/contact";
 import { cn } from "@/lib/utils";
+import { ContactContext, useContact, type ContactRequest } from "./contact-context";
 
 export function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -56,15 +57,7 @@ export function FounderButton({
   );
 }
 
-type ContactRequest = { title: string; description?: string; message: string };
 
-const ContactContext = createContext<{ openContact: (r: ContactRequest) => void } | null>(null);
-
-export function useContact() {
-  const ctx = useContext(ContactContext);
-  if (!ctx) throw new Error("useContact must be used inside <ContactProvider>");
-  return ctx;
-}
 
 export function ContactProvider({ children }: { children: ReactNode }) {
   const [request, setRequest] = useState<ContactRequest | null>(null);

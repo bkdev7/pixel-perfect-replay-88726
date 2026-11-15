@@ -12,7 +12,7 @@ import {
 import { availabilityLabel, categories, messages, products, type Product } from "@/data";
 import { priceLabel } from "@/lib/contact";
 import { cn } from "@/lib/utils";
-import { useContact } from "./ContactDialog";
+import { useContact } from "./contact-context";
 
 const categoryLabel = Object.fromEntries(categories.map((c) => [c.id, c.label]));
 

@@ -2,7 +2,7 @@ import { ArrowRight, QrCode } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { messages, site } from "@/data";
-import { useContact } from "./ContactDialog";
+import { useContact } from "./contact-context";
 
 /**
  * Hero. Quando o banner oficial for enviado, ele substitui a ilustração da placa

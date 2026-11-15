@@ -29,7 +29,8 @@ import {
 } from "@/data";
 import { buildContactMessage } from "@/lib/contact";
 import { cn } from "@/lib/utils";
-import { FounderButton, useContact } from "./ContactDialog";
+import { FounderButton } from "./ContactDialog";
+import { useContact } from "./contact-context";
 
 function SectionHead({
   eyebrow,
