@@ -34,3 +34,4 @@ use the editor.
 - All commercial content (contacts, products, prices, availability, images, WhatsApp messages) lives in `src/data.ts`; components only read it — so non-developers can edit one file.
 - Contact/ordering is client-side only: build `wa.me` links via `src/lib/contact.ts`; never store or send visitor data to a server in this version.
 - Homepage sections live in `src/components/site/` (Header, Hero, Products, Sections, Footer, ContactDialog); keep the folder lean rather than one file per small section.
+- Square Cloud hosting: `BUILD_TARGET=node` (script `build:node`) switches nitro to `node-server`; GitHub Actions builds it and force-pushes the runnable output to the `squarecloud` branch, because Square Cloud neither builds nor installs devDependencies. Keep Lovable's default build untouched.

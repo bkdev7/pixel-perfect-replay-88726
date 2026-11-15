@@ -1,0 +1,96 @@
+# Builds the site as a standalone Node.js server and publishes it, ready to run,
+# to the "squarecloud" branch. Square Cloud deploys from that branch.
+# Square Cloud does not build projects or install devDependencies, so the build happens here.
+name: Build para Square Cloud
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: squarecloud-deploy
+  cancel-in-progress: true
+
+env:
+  # Nome do subdomínio na Square Cloud (vira https://<SUBDOMAIN>.squareweb.app)
+  SQUARECLOUD_SUBDOMAIN: nfcfuture
+  SQUARECLOUD_MEMORY: "512"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Instalar dependências
+        run: bun install
+
+      - name: Testes
+        run: bun run test
+
+      - name: Build (servidor Node.js)
+        run: bun run build:node
+
+      - name: Montar pacote da Square Cloud
+        run: |
+          rm -rf deploy && mkdir deploy
+          cp -r .output deploy/.output
+          cat > deploy/squarecloud.app <<CFG
+          MAIN=.output/server/index.mjs
+          MEMORY=${SQUARECLOUD_MEMORY}
+          VERSION=recommended
+          DISPLAY_NAME=NFC FUTURE
+          DESCRIPTION=Site oficial da NFC FUTURE
+          SUBDOMAIN=${SQUARECLOUD_SUBDOMAIN}
+          AUTORESTART=true
+          CFG
+          sed -i 's/^ *//' deploy/squarecloud.app
+          cat > deploy/package.json <<'PKG'
+          {
+            "name": "nfc-future-server",
+            "private": true,
+            "type": "module",
+            "scripts": { "start": "node .output/server/index.mjs" },
+            "dependencies": { "tslib": "^2.8.1" }
+          }
+          PKG
+          echo "Pacote pronto:" && cat deploy/squarecloud.app && ls -la deploy deploy/.output
+
+      - name: Testar inicialização do servidor
+        run: |
+          cd deploy
+          PORT=3999 HOST=0.0.0.0 node .output/server/index.mjs &
+          SERVER_PID=$!
+          sleep 4
+          curl -fsS -o /tmp/page.html http://127.0.0.1:3999/
+          grep -q "NFC FUTURE" /tmp/page.html
+          echo "Servidor respondeu corretamente."
+          kill $SERVER_PID
+
+      - name: Publicar na branch "squarecloud"
+        run: |
+          cd deploy
+          git init -q -b squarecloud
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7}"
+          git push -q --force "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" squarecloud
+
+      - name: Disponibilizar ZIP para o primeiro upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: nfc-future-squarecloud
+          path: deploy/
+          include-hidden-files: true
+          retention-days: 14
