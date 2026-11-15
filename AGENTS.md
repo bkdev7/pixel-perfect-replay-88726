@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All commercial content (contacts, products, prices, availability, images, WhatsApp messages) lives in `src/data.ts`; components only read it — so non-developers can edit one file.
+- Contact/ordering is client-side only: build `wa.me` links via `src/lib/contact.ts`; never store or send visitor data to a server in this version.
+- Homepage sections live in `src/components/site/` (Header, Hero, Products, Sections, Footer, ContactDialog); keep the folder lean rather than one file per small section.
