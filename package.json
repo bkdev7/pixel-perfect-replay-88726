@@ -7,7 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "build:node": "BUILD_TARGET=node vite build",
+    "build:node": "DEV_SERVER__PROJECT_PATH= LOVABLE_SANDBOX=0 BUILD_TARGET=node vite build",
     "start": "node .output/server/index.mjs",
     "preview": "vite preview",
     "lint": "eslint .",

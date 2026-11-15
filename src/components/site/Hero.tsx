@@ -63,8 +63,8 @@ export function Hero() {
             <span className="nfc-wave" style={{ animationDelay: "2.1s" }} />
           </div>
           <div className="float-soft absolute inset-[22%] chrome-ring rounded-[2rem] card-surface flex flex-col items-center justify-center gap-3 p-6">
-            <span className="text-chrome font-display text-6xl font-bold tracking-tighter sm:text-7xl">
-              NF
+            <span className="text-chrome font-display text-5xl font-bold tracking-tighter sm:text-7xl">
+              NFC
             </span>
             <span className="hairline w-2/3" />
             <span className="flex items-center gap-1.5 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">

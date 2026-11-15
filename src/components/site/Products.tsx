@@ -34,7 +34,7 @@ function ProductImage({ product, className }: { product: Product; className?: st
           loading="lazy"
           decoding="async"
           onError={() => setFailed(true)}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain p-3 sm:p-4"
         />
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center gap-2 text-muted-foreground">
@@ -154,7 +154,7 @@ export function Products() {
         <DialogContent className="card-surface max-h-[90dvh] max-w-[calc(100%-2rem)] overflow-y-auto rounded-2xl border-border p-5 sm:max-w-lg sm:p-6">
           {detail && (
             <>
-              <ProductImage product={detail} className="aspect-[16/9]" />
+              <ProductImage product={detail} className="aspect-[4/3] sm:aspect-[16/9]" />
               <DialogHeader className="text-left">
                 <p className="eyebrow">{categoryLabel[detail.category]}</p>
                 <DialogTitle className="font-display text-2xl">{detail.name}</DialogTitle>

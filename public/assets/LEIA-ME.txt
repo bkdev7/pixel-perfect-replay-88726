@@ -1,0 +1,15 @@
+FOTOS DOS PRODUTOS — NFC FUTURE
+
+Coloque nesta pasta as fotos reais com estes nomes exatos, em letras minúsculas:
+
+nfcgoogle.jpeg  → NFC Google
+nfczap.jpeg     → NFC WhatsApp
+nfcpix.jpeg     → NFC Pix
+nfcmulti.jpeg   → NFC Multifuncional
+
+Para o pacote da Square Cloud, a pasta fica em:
+.output/public/assets/
+
+O site ajusta cada foto ao espaço disponível sem cortar a imagem, tanto no
+celular quanto no computador. Para melhor qualidade, prefira arquivos de até
+2 MB cada e com pelo menos 1000 pixels na maior dimensão.

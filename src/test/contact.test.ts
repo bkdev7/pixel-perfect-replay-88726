@@ -13,8 +13,20 @@ describe("WhatsApp links", () => {
     );
   });
 
-  it("ships with no invented founder numbers", () => {
-    for (const f of founders) expect(f.whatsapp).toBe("");
+  it("uses Vitor's configured number in international format", () => {
+    const vitor = founders.find((f) => f.id === "vitor");
+    expect(vitor?.whatsapp).toBe("5511914364180");
+    expect(whatsappLink(vitor?.whatsapp ?? "", "Olá")).toMatch(
+      /^https:\/\/wa\.me\/5511914364180\?text=/,
+    );
+  });
+
+  it("uses João's configured number in international format", () => {
+    const joao = founders.find((f) => f.id === "joao");
+    expect(joao?.whatsapp).toBe("5511945572901");
+    expect(whatsappLink(joao?.whatsapp ?? "", "Olá")).toMatch(
+      /^https:\/\/wa\.me\/5511945572901\?text=/,
+    );
   });
 });
 

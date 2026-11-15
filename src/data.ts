@@ -41,7 +41,7 @@ export const founders: Founder[] = [
     role: "Co-Founder",
     bio: "Atuação em tecnologia, desenvolvimento digital e projetos.",
     initials: "VH",
-    whatsapp: "", // ← PREENCHER
+    whatsapp: "5511914364180",
   },
   {
     id: "joao",
@@ -50,7 +50,7 @@ export const founders: Founder[] = [
     role: "Co-Founder",
     bio: "Atuação comercial, operações e relacionamento com fornecedores.",
     initials: "JP",
-    whatsapp: "", // ← PREENCHER
+    whatsapp: "5511945572901",
   },
 ];
 
@@ -93,8 +93,8 @@ export type Product = {
   showPrice: boolean;
   availability: Availability;
   /**
-   * Foto real do produto (URL ou caminho). Vazio = placeholder neutro.
-   * Não usar imagens geradas por IA como foto de produto.
+   * Foto real do produto em public/assets (ou URL). Vazio = placeholder neutro.
+   * As fotos são exibidas inteiras, sem corte. Não usar imagens de IA como foto de produto.
    */
   image: string;
 };
@@ -118,7 +118,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "",
+    image: "/assets/nfcgoogle.jpeg",
   },
   {
     id: "nfc-whatsapp",
@@ -136,7 +136,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "",
+    image: "/assets/nfczap.jpeg",
   },
   {
     id: "nfc-pix",
@@ -155,7 +155,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "",
+    image: "/assets/nfcpix.jpeg",
   },
   {
     id: "nfc-multifuncional",
@@ -174,7 +174,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "",
+    image: "/assets/nfcmulti.jpeg",
   },
 ];
 
