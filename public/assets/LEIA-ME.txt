@@ -1,13 +1,14 @@
 FOTOS DOS PRODUTOS — NFC FUTURE
 
-Coloque nesta pasta as fotos reais com estes nomes exatos, em letras minúsculas:
+Na cópia de empacotamento, coloque as fotos antes de compilar, com estes nomes:
 
 nfcgoogle.jpeg  → NFC Google
 nfczap.jpeg     → NFC WhatsApp
 nfcpix.jpeg     → NFC Pix
 nfcmulti.jpeg   → NFC Multifuncional
 
-Para o pacote da Square Cloud, a pasta fica em:
+O ZIP atualizado já inclui as fotos. Não é necessário adicioná-las manualmente.
+Depois da compilação, a pasta do pacote da Square Cloud fica em:
 .output/public/assets/
 
 O site ajusta cada foto ao espaço disponível sem cortar a imagem, tanto no

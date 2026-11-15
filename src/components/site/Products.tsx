@@ -130,7 +130,7 @@ export function Products() {
                 <div className="mt-auto pt-6">
                   <div className="hairline mb-4" />
                   <PriceRow product={p} />
-                  <div className="mt-4 grid grid-cols-1 gap-2 min-[360px]:grid-cols-[1fr_auto]">
+                  <div className="mt-4 grid grid-cols-1 gap-2">
                     <Button variant="chrome" size="touch" onClick={() => requestQuote(p)}>
                       Solicitar orçamento
                     </Button>

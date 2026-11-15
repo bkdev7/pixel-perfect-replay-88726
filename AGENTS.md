@@ -35,3 +35,4 @@ use the editor.
 - Contact/ordering is client-side only: build `wa.me` links via `src/lib/contact.ts`; never store or send visitor data to a server in this version.
 - Homepage sections live in `src/components/site/` (Header, Hero, Products, Sections, Footer, ContactDialog); keep the folder lean rather than one file per small section.
 - Square Cloud hosting: `BUILD_TARGET=node` (script `build:node`) switches nitro to `node-server`; GitHub Actions builds it and force-pushes the runnable output to the `squarecloud` branch, because Square Cloud neither builds nor installs devDependencies. Keep Lovable's default build untouched.
+- Uploaded product photos use CDN pointers in the app; standalone Square Cloud exports must materialize those photos and replace their URLs with local paths in a temporary source copy before compiling, because Lovable-relative asset URLs do not work on external hosts.

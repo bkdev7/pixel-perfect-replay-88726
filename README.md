@@ -11,8 +11,10 @@ Tudo fica em **`src/data.ts`**:
 - `founders[].whatsapp`: números de Vitor e João (só dígitos, com 55 + DDD, ex.: `5511999998888`).
 - `site.instagram` e `site.email`.
 - `products`: nome, descrição, preço (`null` = "Sob consulta"), `showPrice`, disponibilidade e foto.
-- Fotos reais dos produtos: coloque em `public/assets/` com os nomes `nfcgoogle.jpeg`, `nfczap.jpeg`,
-  `nfcpix.jpeg` e `nfcmulti.jpeg`. O site mostra as imagens inteiras, sem corte.
+- Fotos reais dos produtos: os ponteiros em `src/assets/` são importados em `src/data.ts`.
+  O site mostra as imagens inteiras, sem corte. Para um ZIP independente da Square Cloud,
+  materialize as fotos em `public/assets/` e use os caminhos locais na cópia de empacotamento
+  **antes de compilar**. Adicionar fotos em `.output/` depois da compilação não é suficiente.
 - `solutions`: soluções e seus status.
 - `messages`: textos que vão pré-preenchidos no WhatsApp.
 

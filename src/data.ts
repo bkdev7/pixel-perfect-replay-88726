@@ -1,3 +1,8 @@
+import googlePhoto from "@/assets/nfcgoogle.jpeg.asset.json";
+import whatsappPhoto from "@/assets/nfczap.jpeg.asset.json";
+import pixPhoto from "@/assets/nfcpix.jpeg.asset.json";
+import multiPhoto from "@/assets/nfcmulti.jpeg.asset.json";
+
 /**
  * ============================================================
  *  NFC FUTURE — CONFIGURAÇÃO CENTRAL DO SITE
@@ -93,7 +98,7 @@ export type Product = {
   showPrice: boolean;
   availability: Availability;
   /**
-   * Foto real do produto em public/assets (ou URL). Vazio = placeholder neutro.
+    * Foto real do produto por ponteiro Lovable Assets (ou URL). Vazio = placeholder neutro.
    * As fotos são exibidas inteiras, sem corte. Não usar imagens de IA como foto de produto.
    */
   image: string;
@@ -118,7 +123,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "/assets/nfcgoogle.jpeg",
+    image: googlePhoto.url,
   },
   {
     id: "nfc-whatsapp",
@@ -136,7 +141,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "/assets/nfczap.jpeg",
+    image: whatsappPhoto.url,
   },
   {
     id: "nfc-pix",
@@ -155,7 +160,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "/assets/nfcpix.jpeg",
+    image: pixPhoto.url,
   },
   {
     id: "nfc-multifuncional",
@@ -174,7 +179,7 @@ export const products: Product[] = [
     price: null,
     showPrice: true,
     availability: "sob-encomenda",
-    image: "/assets/nfcmulti.jpeg",
+    image: multiPhoto.url,
   },
 ];
 
